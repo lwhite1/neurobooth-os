@@ -27,7 +27,6 @@ def neurobooth_dump():
             f.write(video)
             f.close()
             iphone.dumpsuccess(fname)
-
     iphone.disconnect()
 
 
