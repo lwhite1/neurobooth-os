@@ -7,6 +7,8 @@ Created on Fri Jul 30 09:08:53 2021
 import os.path as op
 import json
 import logging
+
+import yaml
 from collections import OrderedDict
 from datetime import datetime
 
@@ -158,6 +160,10 @@ def _get_task_param(task_id, conn):
     # task_data, stimulus, instruction
     table_task = Table("nb_task", conn=conn)
     task_df = table_task.query(where=f"task_id = '{task_id}'")
+    print(task_df)
+    print(type(task_df))
+    print(yaml.dump(task_df))
+    print(task_df.to_json())
     (devices_ids,) = task_df["device_id_array"]
     (sens_ids,) = task_df["sensor_id_array"]
     (stimulus_id,) = task_df["stimulus_id"]
